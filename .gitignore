@@ -13,6 +13,5 @@ wheels/
 *.csv
 *.txt
 mlflow.db
-*.png
 *.mp4
 *.gif

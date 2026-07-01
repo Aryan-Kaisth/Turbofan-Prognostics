@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+ASSETS = BASE_DIR / "assets"
+
 st.set_page_config(
     page_title="Benchmark",
     page_icon="📊",
@@ -18,7 +24,7 @@ with st.container(border=True):
     The objective of this benchmarking study is not only to identify the highest-performing model but also to understand the strengths, limitations, and practical trade-offs of different modelling approaches. All experiments were tracked using MLflow to ensure reproducibility, transparency, and objective comparison throughout the development process.
     """)
 
-    st.image(r'assets\bench.png', width=500)
+    st.image(ASSETS / "bench.png", width=500)
 
 st.write("")
 

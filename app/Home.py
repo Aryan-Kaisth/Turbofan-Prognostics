@@ -1,6 +1,10 @@
 import streamlit as st
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
+
+ASSETS = BASE_DIR / "assets"
+
 st.set_page_config(
     page_title="RUL Research and Benchmark",
     page_icon="🤖",
@@ -21,7 +25,7 @@ with left:
 
 with right:
     # Fixed slash to prevent escape character bugs while keeping your filename
-    st.image(Path('assets/iqy49grs.png'), use_container_width=True)
+    st.image(ASSETS / "iqy49grs.png", use_container_width=True)
 
 st.divider()
 
@@ -73,7 +77,7 @@ with st.container(border=True):
     
     with img_core_col:
         # Render the degradation curve asset
-        st.image(Path("assets/Asset-Deterioration-Profile@2x.png"), use_container_width=True)
+        st.image(ASSETS / "Asset-Deterioration-Profile@2x.png", use_container_width=True)
         
         # The exact text from your image formatted cleanly with a subtle caption style
         st.markdown("""
@@ -108,7 +112,7 @@ with st.container(border=True):
     
     with img_core_col:
         # Render the degradation curve asset
-        st.image(Path("assets\piecewsie_linear_rul.png"), width=1000)
+        st.image(ASSETS / "piecewsie_linear_rul.png", width=1000)
         
         left, centre, right = st.columns([1, 1.3, 1])
         with centre:

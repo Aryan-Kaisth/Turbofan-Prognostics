@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+ASSETS = BASE_DIR / "assets"
+
 st.set_page_config(
     page_title="About CMAPSS Data",
     page_icon="📊",
@@ -12,7 +18,7 @@ logo_col, title_col = st.columns([1, 9], gap="small")
 
 with logo_col:
     st.markdown("<div style='padding-top: 12px;'></div>", unsafe_allow_html=True)
-    st.image("assets\R.png", width=120)
+    st.image(ASSETS / "R.png", width=120)
 
 with title_col:
     st.title("NASA C-MAPSS Dataset Overview")
@@ -70,7 +76,7 @@ with col1:
 
 with col2:
     st.image(
-        "assets/engine.png", 
+        ASSETS / "engine.png", 
         caption="Local Engine Asset",
         use_container_width=True
     )
@@ -308,7 +314,7 @@ with st.container(border=True):
     left_spacer, center_col, right_spacer = st.columns([1, 2, 1])
     with center_col:
         st.image(
-            "assets/diagram.png", 
+            ASSETS / "diagram.png", 
             caption="Engine Diagram",
             use_container_width=False
         )

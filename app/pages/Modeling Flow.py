@@ -1,4 +1,9 @@
 import streamlit as st
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+ASSETS = BASE_DIR / "assets"
 
 st.set_page_config(
     page_title="RUL Research and Benchmark",
