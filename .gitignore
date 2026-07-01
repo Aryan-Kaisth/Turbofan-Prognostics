@@ -9,6 +9,10 @@ wheels/
 # Virtual environments
 .venv
 
-# datasets
+# data related files
 *.csv
 *.txt
+mlflow.db
+*.png
+*.mp4
+*.gif
