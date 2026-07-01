@@ -3,9 +3,9 @@ import pandas as pd
 
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 
-ASSETS = BASE_DIR / "assets"
+ASSETS = ROOT / "assets"
 
 st.set_page_config(
     page_title="Benchmark",
