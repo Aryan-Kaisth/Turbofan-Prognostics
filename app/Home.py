@@ -103,7 +103,7 @@ with st.container(border=True):
             
     with form_col2:
         with st.container(border=True):
-            st.markdown("### :violet[2. Piecewise RUL]")
+            st.markdown("### :violet[2. Rectified RUL]")
             st.markdown("Accounts for the reality that a healthy engine does not show signs of physical wear early in its life. The target is capped at an upper threshold ($RUL_{max}$):")
             st.latex(r"RUL_t = \min(RUL_{max}, \, t_{fail} - t)")
             st.caption("This bounds the early-stage target values (commonly set between 125 and 130 cycles) until progressive degradation begins.")
@@ -117,7 +117,7 @@ with st.container(border=True):
         left, centre, right = st.columns([1, 1.3, 1])
         with centre:
             st.markdown("""
-            *Standard Linear RUL vs Piecewise (Rectified) RUL*
+            *Standard Linear RUL vs Rectified RUL*
             """)
 
 st.write("")
