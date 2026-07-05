@@ -18,9 +18,6 @@ st.set_page_config(
 DB_PATH = ROOT / "notebooks" / "mlflow.db"
 mlflow.set_tracking_uri(f"sqlite:///{DB_PATH.as_posix()}")
 
-# Initialize database connection layer
-mlflow.set_tracking_uri("sqlite:///C:/Turbofan-Prognostics/notebooks/mlflow.db")
-
 st.title("📊 Benchmark Study")
 st.caption("Systematic validation engine for Remaining Useful Life (RUL) estimation models.")
 st.divider()
