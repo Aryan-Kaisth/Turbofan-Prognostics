@@ -14,8 +14,9 @@ st.set_page_config(
     layout="wide"
 )
 
-# Initialize database connection layer
-mlflow.set_tracking_uri("sqlite:///C:/Turbofan-Prognostics/notebooks/mlflow.db")
+# Dynamic environment path handling for MLflow database location
+DB_PATH = ROOT / "notebooks" / "mlflow.db"
+mlflow.set_tracking_uri(f"sqlite:///{DB_PATH.as_posix()}")
 
 st.title("📊 Benchmark Study")
 st.caption("Systematic validation engine for Remaining Useful Life (RUL) estimation models.")
@@ -223,6 +224,21 @@ def render_experiment_leaderboard(dataset_keyword: str):
         st.error(f"Metadata Retrieval Pipeline Failure: {e}")
         st.caption("Verify tracking environment file-system read permissions to the target database instance.")
 
+# CONFIGURATION ARRAYS FOR ARCHITECTURE CARDS
+ML_ARCHITECTURES = {
+    "HistGBM": {"Type": "Histogram Tree", "Engine": "Scikit-Learn"},
+    "ExtraTrees": {"Type": "Extremely Random Trees", "Engine": "Scikit-Learn"},
+    "CatBoost": {"Type": "Symmetric Tree Boosting", "Engine": "Yandex ML"},
+    "XGBoost": {"Type": "Regularized Gradient Boosting", "Engine": "DMLC Ecosystem"},
+    "LightGBM": {"Type": "Leaf-wise Tree Growth", "Engine": "Microsoft OpenSource"}
+}
+
+DL_ARCHITECTURES = {
+    "TabM": {"Type": "Multi-Predictor Tabular Ensembler", "Engine": "PyTorch Core"},
+    "RealMLP": {"Type": "Optimized Feedforward Baseline", "Engine": "PyTorch Core"},
+    "ResNet": {"Type": "Deep Tabular Residual Blocks", "Engine": "PyTorch Core"}
+}
+
 # CORE WORKSPACE NAVIGATION
 tab_fd001, tab_fd003 = st.tabs([
     "✈️ FD001 (Sea Level / Single Fault)",
@@ -251,21 +267,23 @@ with tab_fd001:
     
     with fd001_ml:
         st.write("")
-        st.markdown("""
-        * **HistGBM**
-        * **ExtraTrees**
-        * **CatBoost**
-        * **XGBoost**
-        * **LightGBM**
-        """)
+        ml_cols = st.columns(5)
+        for col, (name, meta) in zip(ml_cols, ML_ARCHITECTURES.items()):
+            with col.container(border=True):
+                st.markdown(f"##### **{name}**")
+                st.caption(f"**Type:** {meta['Type']}")
+                st.caption(f"**Engine:** {meta['Engine']}")
+        st.write("")
         
     with fd001_dl:
         st.write("")
-        st.markdown("""
-        * **TabM**
-        * **RealMLP**
-        * **ResNet**
-        """)
+        dl_cols = st.columns(3)
+        for col, (name, meta) in zip(dl_cols, DL_ARCHITECTURES.items()):
+            with col.container(border=True):
+                st.markdown(f"##### **{name}**")
+                st.caption(f"**Type:** {meta['Type']}")
+                st.caption(f"**Engine:** {meta['Engine']}")
+        st.write("")
         
     with fd001_exp:
         st.write("")
@@ -293,21 +311,23 @@ with tab_fd003:
     
     with fd003_ml:
         st.write("")
-        st.markdown("""
-        * **HistGBM**
-        * **ExtraTrees**
-        * **CatBoost**
-        * **XGBoost**
-        * **LightGBM**
-        """)
+        ml_cols = st.columns(5)
+        for col, (name, meta) in zip(ml_cols, ML_ARCHITECTURES.items()):
+            with col.container(border=True):
+                st.markdown(f"##### **{name}**")
+                st.caption(f"**Type:** {meta['Type']}")
+                st.caption(f"**Engine:** {meta['Engine']}")
+        st.write("")
         
     with fd003_dl:
         st.write("")
-        st.markdown("""
-        * **TabM**
-        * **RealMLP**
-        * **ResNet**
-        """)
+        dl_cols = st.columns(3)
+        for col, (name, meta) in zip(dl_cols, DL_ARCHITECTURES.items()):
+            with col.container(border=True):
+                st.markdown(f"##### **{name}**")
+                st.caption(f"**Type:** {meta['Type']}")
+                st.caption(f"**Engine:** {meta['Engine']}")
+        st.write("")
         
     with fd003_exp:
         st.write("")
