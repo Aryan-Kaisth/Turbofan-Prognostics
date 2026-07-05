@@ -12,6 +12,8 @@ wheels/
 # data related files
 *.csv
 *.txt
-mlflow.db
 *.mp4
 *.gif
+catboost_info
+mlruns
+.env
